@@ -3,5 +3,7 @@ export const CDN_URL =
 
 export const LOGO_URL =
   "https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&txt_keyword=All";
-export const DATA_API =
-  "https://www.swiggy.com/mapi/homepage/getCards?lat=11.1556686&lng=75.891155";
+export const MENU_API =
+  "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.1556686&lng=75.891155&restaurantId=";
+
+  export const DATA_API= "https://www.swiggy.com/mapi/homepage/getCards?lat=11.1556686&lng=75.891155"   

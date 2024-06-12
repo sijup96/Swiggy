@@ -1,3 +1,5 @@
+# Parcel
+
 # Named export and Default export
 
 # Shimmer UI
@@ -10,6 +12,36 @@
 => useEffect()
 => useRouterError()
 => useParams()
+=> customHooks()
 
 # React Router (createBrowserRouter , routerProvider, outlet)
- 
+
+# Online Status
+
+# Lazy loading
+
+# Tailwind
+
+=> config
+npm install -D tailwindcss postcss
+npx tailwindcss init
+
+-> config the content:
+
+/** @type {import('tailwindcss').Config} \*/
+module.exports = {
+content: ["./src/**/\*.{html,js,ts,jsx,tsx}"],
+theme: {
+extend: {},
+},
+plugins: [],
+}
+
+> Create .postcssrc file in root and insert this code
+> -> {
+> "plugins": {
+
+    "tailwindcss": {}
+
+}
+}

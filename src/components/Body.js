@@ -2,11 +2,13 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { DATA_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnllineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -23,9 +25,9 @@ const Body = () => {
         ?.restaurants
     );
   };
-
+  if (!onlineStatus) return <h1>Check your internet connection.....</h1>;
   // Conditional rendering
-  return restaurantList.length === 0 ? (
+  return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
