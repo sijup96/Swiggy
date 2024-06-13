@@ -1,5 +1,5 @@
 import React from "react";
-
+import UserContext from "../utils/UserContext";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +23,9 @@ componentDidUpdate(){}
     const { name, location, avatar_url } = this.state.userInfo;
     return (
       <div>
+        <UserContext.Consumer>
+          {({loggedUser})=><h2 className="text-xl font-bold">{loggedUser}</h2>}
+        </UserContext.Consumer>
         <img src={avatar_url}></img>
         <h2>Name:{name}</h2>
         <h2>Location: {location}</h2>

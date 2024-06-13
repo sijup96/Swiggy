@@ -1,33 +1,33 @@
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnllineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
-  const onlineStatus=useOnlineStatus()
+  const onlineStatus = useOnlineStatus();
+  const {loggedUser}=useContext(UserContext);
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-xl mb-2">
       <div className="logo-container">
-        <img src={LOGO_URL} className="logo" />
+        <img className="w-56" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
-            Online Status:{onlineStatus?'🟢':'🛑'}
-          </li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-5">
+          <li className="px-4">Online Status:{onlineStatus ? "🟢" : "🛑"}</li>
+          <li className="px-4">
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to={"/about"}>About us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li>
-            <Link to={"/cart"}>Cart</Link>
+          <li className="px-4">
+            { btnName!=='Login'?loggedUser:''}
           </li>
           <button
             className="btnLogin"

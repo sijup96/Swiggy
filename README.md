@@ -45,3 +45,16 @@ plugins: [],
 
 }
 }
+
+# Add the Tailwind directives to your CSS
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+# Higher order component
+
+# React context
+-> import {useContext} from 'react'
+const {}=useContext(contextName)
+=> context.Provider  - To set the value
