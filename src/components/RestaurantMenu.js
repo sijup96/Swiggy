@@ -7,15 +7,12 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   const restInfo = useRestaurantMenu(restaurantId);
-  const [showIndex, setShowIndex]=useState()
+  const [showIndex, setShowIndex] = useState();
 
   if (restInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =
     restInfo?.cards[2]?.card?.card?.info;
-  const { itemCards } =
-    restInfo?.cards[restInfo?.cards?.length - 1]?.groupedCard?.cardGroupMap
-      ?.REGULAR?.cards[1]?.card?.card;
 
   const categories = restInfo?.cards[
     restInfo?.cards?.length - 1
@@ -32,7 +29,12 @@ const RestaurantMenu = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       {categories.map((category, i) => (
-        <RestaurantCategory key={i} data={category?.card?.card} showItem={i===showIndex?true:false } setShowIndex={()=>setShowIndex(i)}/>
+        <RestaurantCategory
+          key={i}
+          data={category?.card?.card}
+          showItem={i === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(i)}
+        />
       ))}
     </div>
   );

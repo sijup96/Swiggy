@@ -55,6 +55,32 @@ plugins: [],
 # Higher order component
 
 # React context
+
 -> import {useContext} from 'react'
 const {}=useContext(contextName)
-=> context.Provider  - To set the value
+=> context.Provider - To set the value
+
+# Redux
+
+-> configureStore()
+-> createSlice
+-> reducer()
+-> reducers()
+-> useDispatch()
+-> useSelector()
+
+# Testing [ developer ] 3 types
+
+=> Unit testing
+=> Integration testing
+=> End to End (E2E) testing
+
+# Setting up Testing in our app
+
+-> Install React Testing Library
+-> Install jest
+-> Install Babel dependencies
+-> Configure Babel
+-> Configure Parcel
+-> Jest configuration
+-> Install jsdom library
