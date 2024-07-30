@@ -1,5 +1,5 @@
 import RestaurantCard, { withRestaurantOpened } from "./RestaurantCard";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { DATA_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnllineStatus";
@@ -13,26 +13,30 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   const RestaurantOpened = withRestaurantOpened(RestaurantCard);
 
-
   useEffect(() => {
     fetchData();
-  }, []);
+return
+  },[]);
   const fetchData = async () => {
-    const dataList = await fetch(DATA_API);
-    const json = await dataList.json();
+try {
+  const dataList = await fetch(DATA_API);
+  const json = await dataList.json();
 
-    setRestaurantList(
-      json.data?.success?.cards[2]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredRes(
-      json.data?.success?.cards[2]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+  setRestaurantList(
+    json.data?.success?.cards[2]?.gridWidget?.gridElements?.infoWithStyle
+      ?.restaurants
+  );
+  setFilteredRes(
+    json.data?.success?.cards[2]?.gridWidget?.gridElements?.infoWithStyle
+      ?.restaurants
+  );
+} catch (error) {
+  console.log(error);
+}
   };
   if (!onlineStatus) return <h1>Check your internet connection.....</h1>;
 
-  const {loggedUser, setUserName} =useContext(UserContext)
+  const { loggedUser, setUserName } = useContext(UserContext);
   // Conditional rendering
   return restaurantList?.length === 0 ? (
     <Shimmer />
@@ -73,9 +77,13 @@ const Body = () => {
             Top Rated Restaurant
           </button>
         </div>
-        <div className="search m-4 p-4 py-4 items-center" >
+        <div className="search m-4 p-4 py-4 items-center">
           <label>User Name: </label>
-          <input className="border border-black p-2" value={loggedUser} onChange={(e)=>setUserName(e.target.value)}/>
+          <input
+            className="border border-black p-2"
+            value={loggedUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
